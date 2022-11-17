@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block title 'voir tout nos biens'%}
+ {% block body %}
+
+    <div class="jumbotron">
+         <div class="container">
+             {{ form_start(form) }}
+             <div class="form-row">
+                 <div class="col">
+                     {{ form_row(form.name) }}
+                 </div>
+                 <div class="col">
+                     {{ form_row(form.nameCategory) }}
+                 </div>
+                 
+                 <div class="col" style="margin-top:30px;">
+                     <button class="btn btn-primary">Rechercher</button>
+                 </div>
+             </div>
+             {{ form_end(form) }}
+         </div>
+     </div>
+
+  <div class="container mt-4">
+   <h1> nos biens</h1>
+
+      <div class="row flex">
+          {% for property in cars %}
+              <div class="col-3" style="margin: 5px;">
+                  <div class="card">
+                     
+                          {% if property.filename %}
+                          <img src="{{ '/images/cars/'~ property.filename   }}" alt="card-image-top" style="height: auto; width: 100%;">
+                      {% else %}
+                          <img src="{{ '/images/cars/v.jpeg'   }}" alt="card-image-top" style="height: auto; width: 100%;">
+                      {% endif %}
+                    
+                      <div class="card-body">
+                          <h5 class="card-title">
+                              <a href="{{ path('car.show', {slug: property.slug, id: property.id}) }}">{{ property.name }}</a>
+                          </h5>
+                          <p class="card-text">number seat : {{ property.nbSeats }}  </p>
+                          <p class="card-text">category : {{ property.carCategory.nameCategory }}  </p>
+                          <p class="card-text"> number Door : ({{ property.nbDoors }})</p>
+                          <div class="text-primary" style="font-weight: bold; font-size: 2rem;">{{ property.costs}} </div>
+                      </div>
+                  </div>
+              </div>
+          {% endfor %}
+      </div>
+     <br>
+      <div >
+         
+      </div>
+      <div class="pagination">
+          {{ knp_pagination_render(cars) }}
+      </div>
+  </div>
+ {% endblock %}

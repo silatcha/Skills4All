@@ -1,0 +1,33 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+ <div id="contactForm" class="mt-4">
+                        {{ form_start(form) }}
+                        
+                        <div class="row" >
+                            <div class="col-md-3">{{ form_row(form.nbSeats) }}</div>
+                            <div class="col-md-3">{{ form_row(form.nbDoors) }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">{{ form_row(form.name) }}</div>
+                            <div class="col-md-3">{{ form_row(form.costs) }}</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">{{ form_row(form.disponible) }}</div>
+                             <div class="col-md-3">{{ form_row(form.imageFile) }}</div>
+                        </div>
+                      
+                       
+                        {{ form_rest(form) }}
+                        <div class="row">
+
+
+                            <div class="col-md-3"> <button class="btn btn-primary" >Envoyer</button></div>
+                                <div class="col">
+                                </div>
+
+                        </div>
+                        {{ form_end(form) }}
+                        
+                    </div>
+                     {% endblock %}

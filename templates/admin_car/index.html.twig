@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block title 'voir tout nos biens'%}
+ {% block body %}
+
+     <div class="jumbotron">
+         <div class="container">
+           
+         </div>
+     </div>
+ <div class="col">
+ {% for  message in app.flashes('success') %}
+                               
+                                    <div class="row">
+                                        <div class="col"> <div class="alert alert-success">
+                                    {{ message }}
+                                </div>
+                                </div>
+                                    </div>
+
+                            {% endfor   %}
+                                </div>
+  <div class="container mt-4">
+
+   <div class="row flex">
+   <div class="col-md-10">
+   <h1> manage car</h1>
+</div>
+<div class="col-md-2">
+   <a href="{{ path('car.create') }}" class="btn btn-primary"> create</a>
+</div>
+</div>
+      <div class="row flex">
+      <table class="table table-hover">
+   <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">number seat</th>
+      <th scope="col">number door</th>
+      <th scope="col">name</th>
+      <th scope="col">costs</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for property in cars %}
+
+             <tr>
+      <th scope="row">{{property.id}}</th>
+      <td>{{property.nbSeats}}</td>
+      <td>{{property.nbDoors}}</td>
+      <td>{{property.name}}</td>
+      <td>{{property.costs}}</td>
+      <td><a href="{{ path('car.edit', {id: property.id}) }}" class="btn btn-secondary"> edit</a>
+      <form methode="post" action="{{ path('car.delete', { id: property.id}) }}" style="display: inline-block;">
+      <input type="hiden" name="_methode" value="delete" hidden>
+      <input type="hiden" name="_token" value="{{csrf_token('delete' ~  property.id)}}" hidden>
+      <button class="btn btn-danger"> delete</button></td>
+      </form>
+    </tr>
+
+          {% endfor %}
+    
+    </tbody>
+</table>
+         
+      </div>
+      <br>
+      <div >
+         
+      </div>
+      <div class="pagination">
+          {{ knp_pagination_render(cars) }}
+      </div>
+  </div>
+ {% endblock %}

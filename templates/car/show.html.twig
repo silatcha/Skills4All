@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block title car.matricule %}
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+
+
+         
+            <div class="row">
+                <div class="col-md-8">
+                 
+                        <img src="{{ '/images/properties/nkap.jpg'   }}" alt="card-image-top" style="height: auto; width: 100%;">
+                   
+                </div>
+               
+
+                    
+
+
+    <div class="container mt-4">
+
+
+        <p>
+
+        </p>
+
+
+        <div class="row">
+            <div class="col-md-8">
+                <h2>caractéristique</h2>
+                <table class="table table-striped">
+                    <tr>
+                        <td>number seats</td>
+                        <td>{{ car.nbSeats }} m²</td>
+                    </tr>
+                    <tr>
+                        <td>number Door</td>
+                        <td>{{ car.nbDoors }}</td>
+                    </tr>
+                    <tr>
+                        <td>name</td>
+                        <td>{{ car.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>costs</td>
+                        <td>{{ car.costs }}</td>
+                    </tr>
+                   
+                </table>
+            </div>
+          
+        </div>
+    </div>
+{% endblock %}
